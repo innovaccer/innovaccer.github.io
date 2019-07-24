@@ -1,0 +1,16 @@
+
+.Line {
+	height: $space-4;
+	width: 100%;
+	background-color: $primary;
+}
+
+.Panel {
+  padding: $space-9 $space-11;
+}
+
+.Panel-title {
+  text-align: center;
+  font-style: italic;
+  text-transform: uppercase;
+}

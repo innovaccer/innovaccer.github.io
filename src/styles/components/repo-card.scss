@@ -1,0 +1,28 @@
+.Repo {
+  background-color: #f7f5ea;
+  border: 4px solid #f6f0e4;
+  padding: $space-8;
+}
+
+.Repo-title {
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.Repo-description {
+  padding: $space-2 0;
+  font-family: FranklinGothic, sans-serif;
+  font-size: 20px;
+}
+
+.Repo-icon {
+  color: #9b9b9b;
+  text-transform: uppercase;
+  padding-right: $space-9;
+  align-items: center;
+  display: inline-flex;
+}
+
+.Repo-label {
+  margin-left: $space-3;
+}

@@ -1,0 +1,27 @@
+.Banner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: $space-11;
+}
+
+.Banner-title {
+	color: $primary;
+	font-family: $hero-font;
+	font-size: $font-5;
+	letter-spacing: $space-1;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.Banner-text {
+	// height: 120px;
+	// width: 901px;
+	// color: #000000;
+	// font-family: "Swiss721 BT";
+	font-size: 48px;
+	font-style: italic;
+  letter-spacing: $space-1;
+  margin: $space-6 0 0;
+	// line-height: 60px;
+}

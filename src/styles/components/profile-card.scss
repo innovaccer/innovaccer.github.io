@@ -1,0 +1,34 @@
+.Profile {
+  text-align: center;
+}
+
+.Profile-avatar {
+  background-color: $light-1;
+  width: $space-12;
+  height: $space-12;
+  border-radius: 50%;
+  // overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+.Profile-star {
+  height: $space-8;
+  width: $space-9;
+  color: $white;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-image: url('/images/star.png');
+  background-repeat: no-repeat;
+  background-size: $space-9 $space-8;
+}
+
+.Profile-name {
+  text-transform: uppercase;
+}
+
+.Profile-icon {
+  font-size: $space-7;
+  padding: 0 $space-3;
+}

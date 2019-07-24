@@ -1,0 +1,11 @@
+.NavBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-6 $space-11;
+}
+
+.NavBar-link {
+  font-style: italic;
+  font-weight: 300;
+}

@@ -1,0 +1,59 @@
+// core - variable, mixin
+
+$base-size: 16px; //1rem; // 16px
+
+@font-face {
+  font-family: 'Swiss-721 BT';
+  src: url('/fonts/swiss.woff2');
+}
+
+@font-face {
+  font-family: 'CenturyModern';
+  src: url('/fonts/CenturyModern-BlackItalic.woff2');
+}
+
+@font-face {
+  font-family: 'FranklinGothic';
+  src: url('/fonts/FranklinGothic.woff2');
+}
+
+$body-font: FranklinGothic, sans-serif !default;
+$mono-font: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier,
+monospace !default;
+
+$body-font-size: $base-size !default;
+$body-line-height: normal !default;
+
+
+// custom designs
+$hero-font:  CenturyModern, sans-serif;
+$heading-font: 'Swiss-721 BT', sans-serif !default;
+
+//spaces
+$base-space: $base-size/8; // 2px
+$space-1: $base-space * 1; //  2px
+$space-2: $base-space * 2; //  4px
+$space-3: $base-space * 4; //  8px
+$space-4: $base-space * 6; //  12px
+$space-5: $base-space * 8; //  16px
+$space-6: $base-space * 12; // 24px
+$space-7: $base-space * 16; // 32px
+$space-8: $base-space * 24; // 48px
+$space-9: $base-space * 32; // 64px
+$space-10: $base-space * 48; // 96px
+$space-11: $base-space * 60; // 120px
+$space-12: $base-space * 88; // 176px
+$space-13: $base-space * 128; // 256px
+
+// font sizes
+$font-base: $base-size; // 16px
+$font-5: $font-base * 5; // 80px
+
+// colors
+$black: #000000;
+$white: #ffffff;
+$primary: #E31C79;
+$light-1: #E9E9E9;
+
+$body-text-color: $black !default;
+$body-background: $white !default;
