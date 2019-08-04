@@ -8,6 +8,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
+import Nav from './Nav';
+import Banner from './Banner';
+import Line from './Line';
+import SubscribePanel from './SubscribePanel';
+import Footer from './Footer';
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -16,15 +21,36 @@ const Layout = ({ children }) => (
         site {
           siteMetadata {
             title
+            nav {
+              logo
+              link {
+                title
+                url
+              }
+            }
+            banner {
+              title
+              text
+            }
           }
         }
       }
     `}
-    render={() => (
-      <>
-        <main>{children}</main>
-      </>
-    )}
+    render={({ site = {} }) => {
+      const { siteMetadata = {} } = site;
+      const { nav, banner } = siteMetadata;
+
+      return (
+        <>
+          <Nav nav={nav} />
+          <Banner title={banner.title} text={banner.text} />
+          <Line />
+          <main>{children}</main>
+          <SubscribePanel />
+          <Footer />
+        </>
+      );
+    }}
   />
 );
 

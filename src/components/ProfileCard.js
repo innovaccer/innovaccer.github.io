@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProfileStar from './ProfileStar';
@@ -15,7 +16,7 @@ const ProfileCard = ({ profile = {} }) => {
     <div className="Profile">
       <div className="Profile-avatar">
         <img src={avatar} alt="Profile-avatar" className="Profile-avatar" />
-        <ProfileStar stars={stars} />
+        <ProfileStar stars={stars.toString()} />
       </div>
       <h2 className="Profile-name">{username || name}</h2>
       <ProfileSocialLinks social={social} />
@@ -28,16 +29,7 @@ ProfileCard.defaultProps = {
 };
 
 ProfileCard.propTypes = {
-  profile: PropTypes.objectOf({
-    name: PropTypes.string,
-    username: PropTypes.string,
-    avatar: PropTypes.string,
-    stars: PropTypes.number,
-    social: PropTypes.objectOf({
-      twitter: PropTypes.string,
-      github: PropTypes.string,
-    }),
-  }),
+  profile: PropTypes.object,
 };
 
 export default ProfileCard;

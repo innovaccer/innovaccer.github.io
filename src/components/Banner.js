@@ -9,8 +9,13 @@ const Banner = ({ title = '', text = [] }) => {
         <h1 className="Banner-title">{title}</h1>
         <Line />
       </div>
-      {text.map(t => {
-        return <h2 className="Banner-text">{t}</h2>;
+      {text.map((t, i) => {
+        return (
+          // eslint-disable-next-line react/no-array-index-key
+          <h2 key={`item-${i}`} className="Banner-text">
+            {t}
+          </h2>
+        );
       })}
     </div>
   );

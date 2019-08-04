@@ -1,16 +1,21 @@
-
 .Line {
-	height: $space-4;
-	width: 100%;
-	background-color: $primary;
+  height: $space-4;
+  width: 100%;
+  background-color: $primary;
 }
 
 .Panel {
-  padding: $space-9 $space-11;
+  padding: $space-9 $space-11 0;
+}
+
+.Flex-holder {
+  display: flex;
+  justify-content: center;
 }
 
 .Panel-title {
   text-align: center;
   font-style: italic;
   text-transform: uppercase;
+  margin-bottom: $space-8;
 }

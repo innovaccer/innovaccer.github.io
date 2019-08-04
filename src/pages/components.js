@@ -8,10 +8,11 @@ import RepoCard from '../components/RepoCard';
 import Line from '../components/Line';
 import RepoPanel from '../components/RepoPanel';
 import ProfilePanel from '../components/ProfilePanel';
+import SubscribePanel from '../components/SubscribePanel';
 
 const Page = () => (
   <div>
-    <Nav />
+    <Nav nav={{ logo: '', link: { title: 'Inno', url: '' } }} />
     <Banner
       title="open source"
       text={[
@@ -44,6 +45,7 @@ const Page = () => (
         forks: 5,
       }}
     />
+    <SubscribePanel />
     <Footer />
   </div>
 );

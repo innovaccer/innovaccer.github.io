@@ -1,19 +1,28 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Nav = () => {
+const Nav = ({ nav = {} }) => {
+  const { logo, link } = nav;
+
   return (
     <nav className="NavBar">
       <a href="/">
-        <img
-          alt="logo"
-          src="https://innovaccer.com/static/image/site-logo/innovaccer-logo-black.svg"
-        />
+        <img alt="logo" src={logo} />
       </a>
-      <a className="NavBar-link" href="http://innovaccer.com">
-        GO TO INNOVACCER.COM
+      <a target="__blank" className="NavBar-link" href={link.url}>
+        {link.title}
       </a>
     </nav>
   );
+};
+
+Nav.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  nav: PropTypes.object,
+};
+
+Nav.defaultProps = {
+  nav: {},
 };
 
 export default Nav;

@@ -12,8 +12,12 @@ body {
 a {
   text-decoration: none;
   color: $body-text-color;
+  &:hover {
+    color: $primary;
+  }
 }
 
 h1, h2, h3, h4 {
   font-family: $heading-font;
+  letter-spacing: $space-1/2;
 }

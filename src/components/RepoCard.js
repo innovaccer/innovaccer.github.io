@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { IoMdCode, IoIosGitNetwork, IoIosStar } from 'react-icons/io';
@@ -29,13 +30,7 @@ const RepoCard = ({ repo = {} }) => {
 };
 
 RepoCard.propTypes = {
-  repo: PropTypes.objectOf({
-    title: PropTypes.string,
-    description: PropTypes.string,
-    language: PropTypes.string,
-    stars: PropTypes.number,
-    forks: PropTypes.number,
-  }),
+  repo: PropTypes.object,
 };
 
 RepoCard.defaultProps = {

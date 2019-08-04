@@ -1,6 +1,21 @@
 module.exports = {
   siteMetadata: {
     title: '',
+    nav: {
+      logo:
+        'https://innovaccer.com/static/image/site-logo/innovaccer-logo-black.svg',
+      link: {
+        title: 'GO TO INNOVACCER.COM',
+        url: 'http://innovaccer.com',
+      },
+    },
+    banner: {
+      title: 'open source',
+      text: [
+        'OUT WITH CLOSED DEV WORKFLOW.',
+        'IN WITH THE FREEDOM TO COLLABORATE',
+      ],
+    },
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -19,6 +34,6 @@ module.exports = {
       options: {
         includePaths: ['src/styles'],
       },
-    },
+    }
   ],
 };
