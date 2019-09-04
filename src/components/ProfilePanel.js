@@ -1,65 +1,116 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable camelcase */
 /* eslint-disable react/no-array-index-key */
-import React, { useState } from 'react';
-import useAxios from 'axios-hooks';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 import Loader from './Loader';
 import ProfileCard from './ProfileCard';
+import factory from './api';
 
-const getContributions = list => {
-  const props = list.items.map(repo => {
-    return (
-      axios
-        .get(`https://github.com/repos/innovaccer/${repo.name}/contributors`)
-        // .then(res => res.json())
-        .then(contributions => console.log(contributions))
-    );
+const getContributions = (orgName, list) => {
+  const props = list.map(repo => {
+    return factory()
+      .then(api => {
+        return api.get(`repos/${orgName}/${repo.name}/contributors`);
+      })
+      .then(({ data = {} }) => {
+        return data;
+      });
   });
-  return Promise.all(props);
+  return Promise.all(props).then(repos => {
+    const contributors = repos.reduce((o, users) => {
+      users.forEach((u = {}) => {
+        if (o[u.login]) {
+          o[u.login] = { ...u, contribution: u.contribution + 1 };
+        } else {
+          o[u.login] = { ...u, contribution: u.contributions || 1 };
+        }
+      });
+      return o;
+    }, {});
+    return contributors;
+  });
 };
 
 const ProfilePanel = () => {
-  const [repos, setRepos] = useState([]);
+  const [contributors, setContributors] = useState([]);
+  const [error = false, setError] = useState([]);
+  const [loading = true, setLoading] = useState([]);
 
-  const [{ data, loading, error }] = useAxios(
-    'https://github.com/orgs/innovaccer/public_members'
-  );
+  const siteData = useStaticQuery(graphql`
+    query ProfileQuery {
+      site {
+        siteMetadata {
+          orgName
+        }
+      }
+    }
+  `);
 
-  // const [{ data: repos, loading: loadingRepos, error: errorRepos }] = useAxios(
-  //   'https://api.github.com/search/repositories?per_page=32&page=1&q=user:innovaccer&sort=stars'
-  // );
+  const {
+    site: {
+      siteMetadata: { orgName },
+    },
+  } = siteData;
 
-  axios
-    .get(
-      'https://github.com/search/repositories?per_page=32&page=1&q=user:innovaccer&sort=stars'
-    )
-    .then(res => res.data)
-    .then(getContributions)
-    .then(contri => {
-      console(contri);
-      setRepos(repos);
-    })
-    .catch(console.error);
+  useEffect(() => {
+    factory()
+      .then(api => {
+        return api.get(`orgs/${orgName}/repos`, {
+          params: {
+            type: 'sources',
+            sort: 'updated',
+          },
+        });
+      })
+      .then(res => res.data)
+      .then(getContributions.bind(null, orgName))
+      // uncomment to see the slow api response
+      // .then(d => {
+      //   return new Promise(resolve => {
+      //     setTimeout(() => {
+      //       resolve(d);
+      //     }, 2000);
+      //   });
+      // })
+      .then(contri => {
+        const users = Object.values(contri)
+          .sort((a, b) => b.contributions - a.contributions)
+          .slice(0, 5);
+        setContributors(users);
+        setLoading(false);
+        setError(false);
+      })
+      .catch(() => {
+        setLoading(false);
+        setError(true);
+      });
+  }, []);
 
-  if (error) {
+  if (error === true) {
     return <div>Could not Load profiles.</div>;
   }
-  if (loading) {
-    return <Loader loading={loading} />;
-  }
+
   return (
     <div className="Panel">
       <h1 className="Panel-title">Top contributors</h1>
-      <div className="Flex-holder">
-        {// eslint-disable-next-line camelcase
-        data.slice(0, 5).map(({ login, avatar_url, html_url }, index) => {
-          const profile = {
-            username: login,
-            avatar: avatar_url,
-            social: { github: html_url },
-          };
-          return <ProfileCard key={index} profile={profile} />;
-        })}
-      </div>
+      {loading && <Loader loading={loading} />}
+      {!loading && (
+        <div className="Flex-holder">
+          {contributors.map(
+            ({ login, avatar_url, html_url, contributions }, index) => {
+              const profile = {
+                username: login,
+                avatar: avatar_url,
+                social: { github: html_url },
+                contributions,
+                profileURL: html_url,
+              };
+              return <ProfileCard key={index} profile={profile} />;
+            }
+          )}
+        </div>
+      )}
     </div>
   );
 };

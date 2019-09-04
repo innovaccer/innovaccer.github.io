@@ -2,8 +2,9 @@
   background-color: $background-1;
   border: 4px solid $border-color;
   padding: $space-8;
-  margin: 22px;
-  min-height: 148px;
+  // margin: 22px;
+  min-height: 170px;
+  position: relative;
 }
 
 .Repo-title {
@@ -12,18 +13,47 @@
 }
 
 .Repo-description {
-  padding: $space-2 0;
-  font-size: $font-md;
+  padding: $space-2 0 $space-6;
+  // font-size: $font-md;
 }
 
 .Repo-icon {
   color: $light-text;
   text-transform: uppercase;
-  padding-right: $space-9;
+  // padding-right: $space-9;
   align-items: center;
-  display: inline-flex;
+  // display: inline-flex;
 }
 
 .Repo-label {
   margin-left: $space-3;
+}
+
+.Repo-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: $space-8;
+  left: 0;
+  padding: 0 $space-8;
+  box-sizing: border-box;
+}
+
+.LoadMore-icon {
+  color: $primary;
+  vertical-align: middle;
+  margin-left: $space-3;
+}
+
+.LoadMore-button {
+  cursor: pointer;
+  font-family: $heading-font;
+  letter-spacing: $space-1/2;
+  padding: 0;
+  background: transparent;
+  border: none;
+  &:focus {
+    outline: none;
+  }
 }

@@ -1,16 +1,39 @@
+.Flex-holder {
+  display: flex;
+  justify-content: space-evenly;
+  margin: $space-4 0;
+  padding: $space-4 0;
+  @include for-phone-only {
+    justify-content: start;
+    width: 100%;
+    overflow: auto;
+  }
+}
+
 .Profile {
   text-align: center;
-  padding: 0 $space-8;
+  // padding: 0 $space-8;
+  flex-basis: 15%;
+  @include for-phone-only {
+    flex: 0 0 40%;
+  }
 }
 
 .Profile-avatar {
   background-color: $light-1;
-  width: $space-12;
-  height: $space-12;
+  // width: $space-12;
+  // height: $space-12;
+  height: auto;
+  width: 100%;
   border-radius: 50%;
   // overflow: hidden;
   position: relative;
   margin: 0 auto;
+}
+
+.Profile-box {
+  padding: 0 $space-6;
+  position: relative;
 }
 
 .Profile-star {
@@ -27,9 +50,11 @@
 
 .Profile-name {
   text-transform: uppercase;
+  word-break: break-all;
 }
 
 .Profile-icon {
   font-size: $space-7;
   padding: 0 $space-3;
+  color: $light-text;
 }

@@ -7,7 +7,7 @@ const Nav = ({ nav = {} }) => {
   return (
     <nav className="NavBar">
       <a href="/">
-        <img alt="logo" src={logo} />
+        <img alt="logo" src={logo} className="NavBar-logo" />
       </a>
       <a target="__blank" className="NavBar-link" href={link.url}>
         {link.title}

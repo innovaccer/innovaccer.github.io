@@ -4,16 +4,19 @@ $base-size: 16px; //1rem; // 16px
 
 @font-face {
   font-family: 'Swiss-721 BT';
+  font-display: auto;
   src: url('/fonts/swiss.woff2');
 }
 
 @font-face {
   font-family: 'CenturyModern';
+  font-display: auto;
   src: url('/fonts/CenturyModern-BlackItalic.woff2');
 }
 
 @font-face {
   font-family: 'FranklinGothic';
+  font-display: auto;
   src: url('/fonts/FranklinGothic.woff2');
 }
 
@@ -58,7 +61,7 @@ $light-1: #E9E9E9;
 $light-2: #f7f5ea;
 $light-3: #f6f0e4;
 
-$dark-1: #9b9b9b;
+$dark-1: #525252;
 
 
 $body-text-color: $black !default;
@@ -69,3 +72,21 @@ $background-1: $light-2;
 $border-color: $light-3;
 
 $light-text: $dark-1;
+
+// mixins
+
+$mobile: 599px;
+
+@mixin page-container {
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
+  width: 80%;
+  @media (max-width: $mobile) { 
+    width: 90%;
+  }
+}
+
+@mixin for-phone-only {
+  @media (max-width: $mobile) { @content; }
+}

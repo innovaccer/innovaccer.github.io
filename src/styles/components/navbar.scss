@@ -1,11 +1,18 @@
 .NavBar {
+  @include page-container;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: $space-6 $space-11;
+  padding: $space-6 0;
 }
 
 .NavBar-link {
   font-style: italic;
   font-weight: 300;
+}
+
+.NavBar-logo {
+  @include for-phone-only {
+    width: 80%;
+  }
 }

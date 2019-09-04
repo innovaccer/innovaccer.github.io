@@ -10,9 +10,9 @@
   &--p5 {
     padding: $space-5;
   }
-
-  &--page {
-    min-height: calc(100vh - 150px);
+  
+  &--gutter {
+    margin: 0px (-$space-6);
   }
 }
 
@@ -30,6 +30,8 @@
 
 .col-4 {
   width: (4 / 12 * 100%);
+  padding: 22px;
+  box-sizing: border-box;
 }
 
 .col-5 {
@@ -38,6 +40,8 @@
 
 .col-6 {
   width: (6 / 12 * 100%);
+  padding: 22px;
+  box-sizing: border-box;
 }
 
 .col-7 {
@@ -62,4 +66,11 @@
 
 .col-12 {
   width: 100%;
+}
+
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+  @include for-phone-only {
+    width: 100%;
+    box-sizing: border-box;
+  }
 }

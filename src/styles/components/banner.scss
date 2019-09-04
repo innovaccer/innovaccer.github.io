@@ -1,8 +1,9 @@
 .Banner {
+  @include page-container;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: $space-9 $space-11 $space-11;
+  padding: $space-9 0 $space-11;
 }
 
 .Banner-title {

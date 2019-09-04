@@ -1,0 +1,35 @@
+name: workflow
+
+on:
+  push:
+    branches:
+    - 1x
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js 8.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: "8.x"
+    - name: npm install, and lint
+      run: |
+        npm install
+        npm run lint
+      env:
+        CI: true
+    - name: deploy
+      run: |
+        npm run build
+        git config user.email "satyam.yadav@innovaccer.com"
+        git config user.name "Satyam Yadav"
+        git checkout 1x
+        git add public -f
+        git commit -m "build:build"
+        git push https://$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git `git subtree split --prefix public 1x`:master --force
+      env:
+        CI: true
+        GITHUB_TOKEN: ${{ secrets.repoAccess }}

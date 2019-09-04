@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const Loader = ({ loading = true }) => {
   if (!loading) {
@@ -12,14 +12,6 @@ const Loader = ({ loading = true }) => {
       <div className="bounce3" />
     </div>
   );
-};
-
-Loader.defaultProps = {
-  loading: true,
-};
-
-Loader.propTypes = {
-  loading: PropTypes.bool,
 };
 
 export default Loader;

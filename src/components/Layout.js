@@ -11,7 +11,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import Nav from './Nav';
 import Banner from './Banner';
 import Line from './Line';
-import SubscribePanel from './SubscribePanel';
+// import SubscribePanel from './SubscribePanel';
 import Footer from './Footer';
 
 const Layout = ({ children }) => (
@@ -32,13 +32,25 @@ const Layout = ({ children }) => (
               title
               text
             }
+            footer {
+              copyright
+              links {
+                title
+                url
+              }
+              social {
+                title
+                url
+                icon
+              }
+            }
           }
         }
       }
     `}
     render={({ site = {} }) => {
       const { siteMetadata = {} } = site;
-      const { nav, banner } = siteMetadata;
+      const { nav, banner, footer } = siteMetadata;
 
       return (
         <>
@@ -46,8 +58,8 @@ const Layout = ({ children }) => (
           <Banner title={banner.title} text={banner.text} />
           <Line />
           <main>{children}</main>
-          <SubscribePanel />
-          <Footer />
+          {/* <SubscribePanel /> */}
+          <Footer data={footer} />
         </>
       );
     }}
